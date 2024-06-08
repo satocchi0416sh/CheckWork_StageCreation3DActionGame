@@ -10,10 +10,11 @@ public class StageCreator : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Vector3 mousePosition = Input.mousePosition;
-            mousePosition.y = 0f;
-            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
-            CreateGround(worldPosition);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out var hit))
+            {
+                CreateGround(hit.point);
+            }
         }
         
     }
