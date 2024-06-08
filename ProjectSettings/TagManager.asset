@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Lava
   - Ground
+  - Goal
   layers:
   - Default
   - TransparentFX
