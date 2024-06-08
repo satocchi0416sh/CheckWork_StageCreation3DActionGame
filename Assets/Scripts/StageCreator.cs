@@ -7,10 +7,11 @@ public class StageCreator : MonoBehaviour
 {
     [SerializeField] private GameObject groundPrefab;
     [SerializeField] private StagePartManager stagePartManager;
+    [SerializeField] private ModeSwitcher modeSwitcher;
     
     private void Update()
     {
-        
+        if (!modeSwitcher.IsCreateMode) return;
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -31,7 +32,8 @@ public class StageCreator : MonoBehaviour
     
     private void CreateGround(Vector3 position)
     {
-        Instantiate(groundPrefab, position, Quaternion.identity);
+        GameObject ground = Instantiate(groundPrefab, position, Quaternion.identity);
+        StageDataManager.Instance.AddStagePartData(ground);
     }
     
     private void SelectPart(GameObject part)

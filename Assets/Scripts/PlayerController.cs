@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
         Move();
         Jump();
     }
-
+    
     private void Move()
     {
         float horizontal = Input.GetAxis("Horizontal");
@@ -54,8 +54,13 @@ public class PlayerController : MonoBehaviour
         
         if (other.gameObject.CompareTag("Lava"))
         {
-            transform.position = _startPosition;
-            GetComponent<Rigidbody>().velocity = Vector3.zero;
+            ResetPosition();
         }
+    }
+    
+    public void ResetPosition()
+    {
+        transform.position = _startPosition;
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 }

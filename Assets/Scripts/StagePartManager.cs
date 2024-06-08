@@ -28,6 +28,7 @@ public class StagePartManager : MonoBehaviour
     {
         if (_isPartSelected)
         {
+            StageDataManager.Instance.RemoveStagePartData(_selectedPart);
             Destroy(_selectedPart);
             _isPartSelected = false;
             partButtonContainer.SetActive(false);
